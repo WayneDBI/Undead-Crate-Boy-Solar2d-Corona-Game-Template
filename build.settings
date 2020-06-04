@@ -1,0 +1,222 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+	
+	orientation =
+	{
+		-- Supported values for orientation:
+		-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+
+		default = "landscapeLeft",
+		supported = { "landscapeLeft", "landscapeRight"}
+	},
+	
+
+    ----------------------------------------------------------------------------
+	-- Enable / Disable Ad networks as required
+    ----------------------------------------------------------------------------
+    plugins =
+    {
+        
+
+     	----------------------------------------------------------------------------
+    	-- Vungle Video Ads  |  Set iPhone and Android Values as required.
+    	----------------------------------------------------------------------------
+		["CoronaProvider.ads.vungle"] =
+        {
+            publisherId = "com.vungle"
+        },
+
+         ----------------------------------------------------------------------------
+    	-- AdMob V2  |  Set iPhone and Android Values as required.
+    	----------------------------------------------------------------------------
+		["plugin.google.play.services"] =
+		{
+	      publisherId = "com.coronalabs",
+	      --supportedPlatforms = { android=true, iphone=true, ["iphone-sim"]=true },
+		},
+
+        ["CoronaProvider.gameNetwork.google"] =
+        {
+            publisherId = "com.coronalabs",
+            supportedPlatforms = { android=true }
+         },
+
+    	----------------------------------------------------------------------------
+
+    },      
+
+
+
+
+
+
+
+
+	excludeFiles =
+	{
+	    -- Exclude all files at paths which end with "secret.txt"
+        -- all = { "*secret.txt" },
+
+        -- Exclude all Android icon files and .ogg files in the "music" directory
+		iphone = { "Icon-*dpi.png", "music/*.ogg" },
+        
+        -- Exclude iOS "retina" image files and .m4a files in the "music" directory
+		android = { "Icon.png", "Icon-Small-*.png", "Icon*@2x.png", "music/*.m4a" },
+
+        -- Exclude unnecessary assets from OS X desktop apps
+        osx = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns" },
+
+        -- Exclude unnecessary assets from Win32 desktop apps
+        win32 = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns" },
+	},
+
+	--
+	-- iOS Section
+	--
+	iphone =
+	{
+		plist =
+		{
+			UIStatusBarHidden = false,
+			UIPrerenderedIcon = true, -- set to false for "shine" overlay
+			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+
+            NSAppTransportSecurity = 
+              { 
+            NSAllowsArbitraryLoads = true }, 
+
+			CFBundleIconFiles =
+			{
+				"Icon.png",
+				"Icon@2x.png",
+				"Icon-167.png",
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-60@3x.png",
+				"Icon-72.png",
+				"Icon-72@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-Small.png",
+				"Icon-Small@2x.png",
+				"Icon-Small@3x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+				"Icon-Small-50.png",
+				"Icon-Small-50@2x.png",
+			},
+
+            -- Launch image files table
+            UILaunchImages = {
+                {  -- iPhone 4 LandscapeLeft
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{320, 480}"
+                },
+                {  -- iPhone 4 LandscapeRight
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{320, 480}"
+                },
+                {  -- iPhone 5 LandscapeLeft
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default-568h",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{320, 568}"
+                },
+                {  -- iPhone 5 LandscapeRight
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default-568h",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{320, 568}"
+                },
+                {  -- iPad LandscapeLeft
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default-Landscape",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{768, 1024}"
+                },
+                {  -- iPad LandscapeRight
+                    ["UILaunchImageMinimumOSVersion"] = "7.0",
+                    ["UILaunchImageName"] = "Default-Landscape",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{768, 1024}"
+                },
+                {  -- iPhone 6 LandscapeLeft
+                    ["UILaunchImageMinimumOSVersion"] = "8.0",
+                    ["UILaunchImageName"] = "Default-667h",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{375, 667}"
+                },
+                {  -- iPhone 6 LandscapeRight
+                    ["UILaunchImageMinimumOSVersion"] = "8.0",
+                    ["UILaunchImageName"] = "Default-667h",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{375, 667}"
+                },
+                {  -- iPhone 6 Plus LandscapeLeft
+                    ["UILaunchImageMinimumOSVersion"] = "8.0",
+                    ["UILaunchImageName"] = "Default-Landscape-736h",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{414, 736}"
+                },
+                {  -- iPhone 6 Plus LandscapeRight
+                    ["UILaunchImageMinimumOSVersion"] = "8.0",
+                    ["UILaunchImageName"] = "Default-Landscape-736h",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{414, 736}"
+                },
+                {  -- iPad Pro Landscape Right
+                    ["UILaunchImageMinimumOSVersion"] = "9.0",
+                    ["UILaunchImageName"] = "Default-Landscape-1366",
+                    ["UILaunchImageOrientation"] = "LandscapeRight",
+                    ["UILaunchImageSize"] = "{1024, 1366}"
+                },
+                {  -- iPad Pro Landscape Left
+                    ["UILaunchImageMinimumOSVersion"] = "9.0",
+                    ["UILaunchImageName"] = "Default-Landscape-1366",
+                    ["UILaunchImageOrientation"] = "LandscapeLeft",
+                    ["UILaunchImageSize"] = "{1024, 1366}"
+                },
+            },
+
+
+
+
+
+
+			--[[
+			-- iOS app URL schemes:
+			CFBundleURLTypes =
+			{
+				{
+					CFBundleURLSchemes =
+					{
+						"fbXXXXXXXXX",  -- replace XXXXXXXXX with your Facebook appId
+					}
+				}
+			}
+			--]]
+		}
+	},
+	
+	--
+	-- Android Section
+	--
+	android =
+	{
+		usesPermissions =
+		{
+            "android.permission.INTERNET",
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            "android.permission.ACCESS_NETWORK_STATE",
+		},
+	},
+}
